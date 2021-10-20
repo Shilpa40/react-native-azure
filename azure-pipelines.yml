@@ -25,3 +25,18 @@ steps:
     javaHomeOption: 'JDKVersion'
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'my-upload-key.keystore'
+    apksignerKeystorePassword: '$(KeyStorePassword)'
+    apksignerKeystoreAlias: '$(KeyAlias)'
+    apksignerKeyPassword: '$(KeyPassword)'
+    zipalign: false
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'android/app/build/outputs/apk/release'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
