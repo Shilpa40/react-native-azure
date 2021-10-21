@@ -24,7 +24,7 @@ steps:
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+    tasks: 'assembleRelease'
 
 - task: AndroidSigning@3
   inputs:
